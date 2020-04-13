@@ -1,5 +1,4 @@
 ﻿using C4M.Domain.Attributes;
-using C4M.Domain.Infra.Configurations;
 using C4M.Domain.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static C4M.Domain.Infra.Settings.Settings;
 
 namespace C4M.Domain.Infra.Repositories
 {

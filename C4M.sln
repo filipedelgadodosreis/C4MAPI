@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4M.Domain", "C4M.Domain\C4M.Domain.csproj", "{25D54718-DFE5-46CE-939D-FD03F42D0032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C4M.Domain", "C4M.Domain\C4M.Domain.csproj", "{25D54718-DFE5-46CE-939D-FD03F42D0032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4M.Domain.Infra", "C4M.Domain.Infra\C4M.Domain.Infra.csproj", "{84178D8B-5E60-4181-A314-46EB2CB19564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C4M.Domain.Infra", "C4M.Domain.Infra\C4M.Domain.Infra.csproj", "{84178D8B-5E60-4181-A314-46EB2CB19564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4M.Domain.Api", "C4M.Domain.Api\C4M.Domain.Api.csproj", "{D4AA50C2-4FEC-4A72-8722-3146516D78E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{84178D8B-5E60-4181-A314-46EB2CB19564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84178D8B-5E60-4181-A314-46EB2CB19564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84178D8B-5E60-4181-A314-46EB2CB19564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4AA50C2-4FEC-4A72-8722-3146516D78E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4AA50C2-4FEC-4A72-8722-3146516D78E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4AA50C2-4FEC-4A72-8722-3146516D78E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4AA50C2-4FEC-4A72-8722-3146516D78E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
