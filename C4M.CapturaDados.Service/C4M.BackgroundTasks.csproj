@@ -3,9 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-C4M.CapturaDados.Service-46B4B044-EA3A-4F44-8465-57A27D21D5BA</UserSecretsId>
+    <AssemblyName>C4M.BackgroundTasks</AssemblyName>
+    <RootNamespace>C4M.BackgroundTasks</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F16F846C-E34
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{560C69ED-DCC4-4577-9202-948E5B384A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4M.CapturaDados.Service", "C4M.CapturaDados.Service\C4M.CapturaDados.Service.csproj", "{16EFA554-FAD2-4783-ACD6-7C2692A04D20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4M.BackgroundTasks", "C4M.CapturaDados.Service\C4M.BackgroundTasks.csproj", "{16EFA554-FAD2-4783-ACD6-7C2692A04D20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
