@@ -10,7 +10,7 @@ namespace C4M.Domain.Interfaces
     {
         IQueryable<TDocument> AsQueryable();
 
-        IEnumerable<TDocument> FilterBy(Expression<Func<TDocument, bool>> filterExpression);
+        Task<IEnumerable<TDocument>> FilterBy(Expression<Func<TDocument, bool>> filterExpression);
 
         IEnumerable<TProjected> FilterBy<TProjected>(Expression<Func<TDocument, bool>> filterExpression, Expression<Func<TDocument, TProjected>> projectionExpression);
 
@@ -28,7 +28,7 @@ namespace C4M.Domain.Interfaces
 
         void InsertMany(ICollection<TDocument> documents);
 
-        Task InsertManyAsync(ICollection<TDocument> documents);
+        Task InsertManyAsync(IEnumerable<TDocument> documents);
 
         void ReplaceOne(TDocument document);
 

@@ -1,12 +1,17 @@
-using C4M.Domain.Infra.Repositories;
+using AutoMapper;
 using C4M.Domain.Interfaces;
+using C4M.Infra.Mongo.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using static C4M.Domain.Infra.Settings.Settings;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Linq;
+using static C4M.Infra.Mongo.Settings.Settings;
 
 namespace C4M.Domain.Api
 {
@@ -22,6 +27,38 @@ namespace C4M.Domain.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApiVersioning(o =>
+            {
+                o.ReportApiVersions = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.AssumeDefaultVersionWhenUnspecified = true;
+            });
+            services.AddVersionedApiExplorer(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.SubstituteApiVersionInUrl = true;
+                options.GroupNameFormat = "VVVV";
+                options.SubstitutionFormat = "VVVV";
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1.0", new OpenApiInfo { Title = "C4M API", Version = "v1.0" });
+                c.DocInclusionPredicate((docName, apiDesc) =>
+                {
+                    if (!apiDesc.TryGetMethodInfo(out var methodInfo))
+                        return false;
+                    if (methodInfo?.DeclaringType == null)
+                        return false;
+                    var versions = methodInfo.DeclaringType
+                        .GetCustomAttributes(true)
+                        .OfType<ApiVersionAttribute>()
+                        .SelectMany(attr => attr.Versions);
+                    return versions.Any(v => $"v{v}" == docName);
+                });
+            });
+
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
 
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
@@ -30,6 +67,9 @@ namespace C4M.Domain.Api
             services.AddControllers();
 
             services.AddTransient(typeof(IMongoRepository<>), typeof(MongoRepository<>));
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +89,12 @@ namespace C4M.Domain.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "C4M API");
             });
         }
     }

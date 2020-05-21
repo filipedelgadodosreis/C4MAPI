@@ -11,26 +11,26 @@ namespace C4M.Api.AutoMapper
             CreateMap<Domain.Entities.Instrument, Instrument>();
             CreateMap<Domain.Entities.Applicationinventory, Applicationinventory>();
             CreateMap<Domain.Entities.Applicationpackage, Applicationpackage>();
-            CreateMap<Devicedate, Domain.Entities.Devicedate>();
-            CreateMap<Batterymonitorsettings, Domain.Entities.Batterymonitorsettings>();
-            CreateMap<Blacklist, Domain.Entities.Blacklist>();
-            CreateMap<Datausage, Domain.Entities.Datausage>();
-            CreateMap<Devicedate1, Domain.Entities.Devicedate1>();
-            CreateMap<Datausagemonitorsettings, Domain.Entities.Datausagemonitorsettings>();
-            CreateMap<Deviceinformation, Domain.Entities.Deviceinformation>();
-            CreateMap<Devicedate2, Domain.Entities.Devicedate2>();
-            CreateMap<Group, Domain.Entities.Group>();
-            CreateMap<Lastbatterydata, Domain.Entities.Lastbatterydata>();
-            CreateMap<Devicedate3, Domain.Entities.Devicedate3>();
-            CreateMap<Lastlocation, Domain.Entities.Lastlocation>();
-            CreateMap<Coordinate, Domain.Entities.Coordinate>();
-            CreateMap<Devicedate4, Domain.Entities.Devicedate4>();
-            CreateMap<Lastmemorydata, Domain.Entities.Lastmemorydata>();
-            CreateMap<Devicedate5, Domain.Entities.Devicedate5>();
-            CreateMap<Locationhistorymonitorsettings, Domain.Entities.Locationhistorymonitorsettings>();
-            CreateMap<Locationmonitorsettings, Domain.Entities.Locationmonitorsettings>();
-            CreateMap<Memorymonitorsettings, Domain.Entities.Memorymonitorsettings>();
-            CreateMap<Applicationusagestatisticsmonitorsettings, Domain.Entities.Applicationusagestatisticsmonitorsettings>();
+            CreateMap<Domain.Entities.Devicedate, Devicedate>();
+            CreateMap<Domain.Entities.Batterymonitorsettings, Batterymonitorsettings>();
+            CreateMap<Domain.Entities.Blacklist, Blacklist>();
+            CreateMap<Domain.Entities.Datausage, Datausage>();
+            CreateMap<Domain.Entities.Devicedate1, Devicedate1>();
+            CreateMap<Domain.Entities.Datausagemonitorsettings, Datausagemonitorsettings>();
+            CreateMap<Domain.Entities.Deviceinformation, Deviceinformation>();
+            CreateMap<Domain.Entities.Devicedate2, Devicedate2>();
+            CreateMap<Domain.Entities.Group, Group>();
+            CreateMap<Domain.Entities.Lastbatterydata, Lastbatterydata>();
+            CreateMap<Domain.Entities.Devicedate3, Devicedate3>();
+            CreateMap<Domain.Entities.Lastlocation, Lastlocation>();
+            CreateMap<Domain.Entities.Coordinate, Coordinate>();
+            CreateMap<Domain.Entities.Devicedate4, Devicedate4>();
+            CreateMap<Domain.Entities.Lastmemorydata, Lastmemorydata>();
+            CreateMap<Domain.Entities.Devicedate5, Devicedate5>();
+            CreateMap<Domain.Entities.Locationhistorymonitorsettings, Locationhistorymonitorsettings>();
+            CreateMap<Domain.Entities.Locationmonitorsettings, Locationmonitorsettings>();
+            CreateMap<Domain.Entities.Memorymonitorsettings, Memorymonitorsettings>();
+            CreateMap<Domain.Entities.Applicationusagestatisticsmonitorsettings, Applicationusagestatisticsmonitorsettings>();
         }
     }
 }

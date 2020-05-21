@@ -1,6 +1,4 @@
-﻿using C4M.Domain.Attributes;
-using C4M.Domain.Interfaces;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;

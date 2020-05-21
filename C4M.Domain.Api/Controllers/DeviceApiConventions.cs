@@ -22,6 +22,7 @@ namespace C4M.Api.Controllers
         [ApiConventionNameMatch(ApiConventionNameMatchBehavior.Prefix)]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public static void Get() => throw new NotImplementedException();
         [ApiConventionNameMatch(ApiConventionNameMatchBehavior.Prefix)]

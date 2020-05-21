@@ -34,10 +34,11 @@ namespace C4M.Infra.Mongo.Repositories
             return _collection.AsQueryable();
         }
 
-        public virtual IEnumerable<TDocument> FilterBy(
+        public virtual Task<IEnumerable<TDocument>> FilterBy(
             Expression<Func<TDocument, bool>> filterExpression)
         {
-            return _collection.Find(filterExpression).ToEnumerable();
+            //return _collection.Find(filterExpression).ToEnumerable();
+            return Task.Run(() => _collection.Find(filterExpression).ToEnumerable());
         }
 
         public virtual IEnumerable<TProjected> FilterBy<TProjected>(
@@ -91,7 +92,7 @@ namespace C4M.Infra.Mongo.Repositories
         }
 
 
-        public virtual async Task InsertManyAsync(ICollection<TDocument> documents)
+        public virtual async Task InsertManyAsync(IEnumerable<TDocument> documents)
         {
             await _collection.InsertManyAsync(documents);
         }
