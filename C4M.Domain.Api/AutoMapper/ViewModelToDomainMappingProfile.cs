@@ -7,30 +7,30 @@ namespace C4M.Api.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<DeviceCreate, Domain.Entities.Device>();
-            CreateMap<Instrument, Domain.Entities.Instrument>();
-            CreateMap<Applicationinventory, Domain.Entities.Applicationinventory>();
-            CreateMap<Applicationpackage, Domain.Entities.Applicationpackage>();
-            CreateMap<Devicedate, Domain.Entities.Devicedate>();
-            CreateMap<Batterymonitorsettings, Domain.Entities.Batterymonitorsettings>();
-            CreateMap<Blacklist, Domain.Entities.Blacklist>();
-            CreateMap<Datausage, Domain.Entities.Datausage>();
-            CreateMap<Devicedate1, Domain.Entities.Devicedate1>();
-            CreateMap<Datausagemonitorsettings, Domain.Entities.Datausagemonitorsettings>();
-            CreateMap<Deviceinformation, Domain.Entities.Deviceinformation>();
-            CreateMap<Devicedate2, Domain.Entities.Devicedate2>();
-            CreateMap<Group, Domain.Entities.Group>();
-            CreateMap<Lastbatterydata, Domain.Entities.Lastbatterydata>();
-            CreateMap<Devicedate3, Domain.Entities.Devicedate3>();
-            CreateMap<Lastlocation, Domain.Entities.Lastlocation>();
-            CreateMap<Coordinate, Domain.Entities.Coordinate>();
-            CreateMap<Devicedate4, Domain.Entities.Devicedate4>();
-            CreateMap<Lastmemorydata, Domain.Entities.Lastmemorydata>();
-            CreateMap<Devicedate5, Domain.Entities.Devicedate5>();
-            CreateMap<Locationhistorymonitorsettings, Domain.Entities.Locationhistorymonitorsettings>();
-            CreateMap<Locationmonitorsettings, Domain.Entities.Locationmonitorsettings>();
-            CreateMap<Memorymonitorsettings, Domain.Entities.Memorymonitorsettings>();
-            CreateMap<Applicationusagestatisticsmonitorsettings, Domain.Entities.Applicationusagestatisticsmonitorsettings>();
+            CreateMap<DeviceCreate, Domain.Entities.EstruturaEquipamento>();
+            CreateMap<Instrument, Domain.Entities.C4MEquipamentosMongo>();
+            CreateMap<ApplicationinventoryAll, Domain.Entities.ApplicationinventoryAll>();
+            CreateMap<Applicationpackages, Domain.Entities.Applicationpackages>();
+            CreateMap<DevicedateAll, Domain.Entities.DevicedateAll>();
+            CreateMap<BatterymonitorsettingsAll, Domain.Entities.BatterymonitorsettingsAll>();
+            CreateMap<BlacklistAll, Domain.Entities.BlacklistAll>();
+            CreateMap<DatausageAll, Domain.Entities.DatausageAll>();
+            CreateMap<Devicedate1All, Domain.Entities.Devicedate1All>();
+            CreateMap<DatausagemonitorsettingsAll, Domain.Entities.DatausagemonitorsettingsAll>();
+            CreateMap<DeviceinformationAll, Domain.Entities.DeviceinformationAll>();
+            CreateMap<Devicedate2All, Domain.Entities.Devicedate2All>();
+            CreateMap<GroupAll, Domain.Entities.GroupAll>();
+            CreateMap<LastbatterydataAll, Domain.Entities.LastbatterydataAll>();
+            CreateMap<Devicedate3All, Domain.Entities.Devicedate3All>();
+            CreateMap<LastlocationAll, Domain.Entities.LastlocationAll>();
+            CreateMap<CoordinateAll, Domain.Entities.CoordinateAll>();
+            CreateMap<Devicedate4All, Domain.Entities.Devicedate4All>();
+            CreateMap<LastmemorydataAll, Domain.Entities.LastmemorydataAll>();
+            CreateMap<Devicedate5All, Domain.Entities.Devicedate5All>();
+            CreateMap<LocationhistorymonitorsettingsAll, Domain.Entities.LocationhistorymonitorsettingsAll>();
+            CreateMap<LocationmonitorsettingsAll, Domain.Entities.LocationmonitorsettingsAll>();
+            CreateMap<MemorymonitorsettingsAll, Domain.Entities.MemorymonitorsettingsAll>();
+            CreateMap<ApplicationusagestatisticsmonitorsettingsAll, Domain.Entities.ApplicationusagestatisticsmonitorsettingsAll>();
         }
     }
 }

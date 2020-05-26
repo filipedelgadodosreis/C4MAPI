@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using C4M.Api.Infrastructure;
 using C4M.Api.ViewModel;
+using C4M.Domain.Entities;
 using C4M.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,9 +16,9 @@ namespace C4M.Api.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ILogger<DeviceController> _logger;
-        private readonly IMongoRepository<Domain.Entities.Instrument> _deviceRepository;
+        private readonly IMongoRepository<C4MEquipamentosMongo> _deviceRepository;
 
-        public DeviceController(IMongoRepository<Domain.Entities.Instrument> deviceRepository, ILogger<DeviceController> logger, IMapper mapper)
+        public DeviceController(IMongoRepository<C4MEquipamentosMongo> deviceRepository, ILogger<DeviceController> logger, IMapper mapper)
         {
             _mapper = mapper;
             _logger = logger;
@@ -36,21 +37,21 @@ namespace C4M.Api.Controllers
 
         [HttpGet]
         [Route("{deviceid:min(1)}")]
-        public async Task<ActionResult<IEnumerable<Instrument>>> GetAsync(string id)
+        public async Task<ActionResult<IEnumerable<C4MEquipamentosMongo>>> GetAsync(string id)
         {
             _logger.LogDebug("Obtendo todos os devices.");
 
             var device = await _deviceRepository.FilterBy(filter => filter.hardwareId == id);
 
-            return Ok(_mapper.Map<IEnumerable<Instrument>>(device));
+            return Ok(_mapper.Map<IEnumerable<C4MEquipamentosMongo>>(device));
         }
 
         [HttpPost]
         public async Task<ActionResult> PostAllAsync([FromBody]DeviceCreate deviceCreate)
         {
-            var devices = _mapper.Map<Domain.Entities.Device>(deviceCreate);
+            var devices = _mapper.Map<List<C4MEquipamentosMongo>>(deviceCreate.Devices);
 
-            await _deviceRepository.InsertManyAsync(devices.Devices);
+            await _deviceRepository.InsertManyAsync(devices);
 
             return Ok();
         }

@@ -1,16 +1,18 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using C4M.Domain.Attributes;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace C4M.Api.ViewModel
+namespace C4M.Domain.Entities
 {
-    public class DeviceCreate
+    public class EstruturaEquipamento
     {
-        public List<Instrument> Devices { get; set; } = new List<Instrument>();
+        public List<C4MEquipamentosMongo> Equipamentos { get; set; } = new List<C4MEquipamentosMongo>();
     }
 
-    public class Instrument
+    [BsonCollection("Equipamentos")]
+    public class C4MEquipamentosMongo : Document
     {
         public int IdEmpresa { get; set; }
 
@@ -19,11 +21,11 @@ namespace C4M.Api.ViewModel
         [BsonIgnoreIfNull]
         public int? activeApplicationId { get; set; }
         [BsonIgnoreIfNull]
-        public string? activeApplicationVersionName { get; set; }
+        public string activeApplicationVersionName { get; set; }
         [BsonIgnoreIfNull]
         public int? activeApplicationVersionNameAsNumber { get; set; }
         [BsonIgnoreIfNull]
-        public string? alias { get; set; }
+        public string alias { get; set; }
         [BsonIgnoreIfNull]
         public object androidForWorkPolicySettings { get; set; }
         [BsonIgnoreIfNull]
@@ -53,10 +55,12 @@ namespace C4M.Api.ViewModel
         [BsonIgnoreIfNull]
         public int? groupId { get; set; }
         [BsonIgnoreIfNull]
-        public string? hardwareId { get; set; }
+        public string hardwareId { get; set; }
+
         [BsonIgnoreIfNull]
         [JsonProperty("id")]
         public int? DeviceId { get; set; }
+
         [BsonIgnoreIfNull]
         public LastbatterydataAll lastBatteryData { get; set; }
         [BsonIgnoreIfNull]
@@ -245,9 +249,9 @@ namespace C4M.Api.ViewModel
     public class GroupAll
     {
         [BsonIgnoreIfNull]
-        public string? enrollCode { get; set; }
+        public string enrollCode { get; set; }
         [BsonIgnoreIfNull]
-        public string? fullName { get; set; }
+        public string fullName { get; set; }
         [BsonIgnoreIfNull]
         [JsonProperty("id")]
         public int? GroupId { get; set; }
@@ -464,7 +468,7 @@ namespace C4M.Api.ViewModel
     public class BlacklistAll
     {
         [BsonIgnoreIfNull]
-        public string? alias { get; set; }
+        public string alias { get; set; }
         [BsonIgnoreIfNull]
         [JsonProperty("id")]
         public int? BlacklistId { get; set; }
