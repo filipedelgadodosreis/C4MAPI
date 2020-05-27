@@ -31,6 +31,14 @@ namespace C4M.Api.AutoMapper
             CreateMap<Locationmonitorsettings, Domain.Entities.Locationmonitorsettings>();
             CreateMap<Memorymonitorsettings, Domain.Entities.Memorymonitorsettings>();
             CreateMap<Applicationusagestatisticsmonitorsettings, Domain.Entities.Applicationusagestatisticsmonitorsettings>();
+
+            CreateMap<InstrumentDadosMinimos, Domain.Entities.TresCoracoesDadosMinimos>();
+            CreateMap<DeviceCreateDadosMinimos, Domain.Entities.TresCoracoesEquipamentosDadosMinimos>();
+            CreateMap<Batterymonitorsettingsdm, Domain.Entities.Batterymonitorsettingsdm>();
+            CreateMap<Deviceinformationdm, Domain.Entities.Deviceinformationdm>();
+            CreateMap<Devicedatedm, Domain.Entities.Devicedatedm>();
+            CreateMap<Lastbatterydatadm, Domain.Entities.Lastbatterydatadm>();
+            CreateMap<Devicedate1dm, Domain.Entities.Devicedate1dm>();
         }
     }
 }

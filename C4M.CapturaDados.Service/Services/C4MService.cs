@@ -41,6 +41,19 @@ namespace C4M.BackgroundTasks.Services
             //Forçar o retorno de um status code incorreto
         }
 
+        public async Task<string> ObterDadosMinimos(C4MSettings dados)
+        {
+            _apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GetBearerToken(Settings.UrlDadosMinimos, "GET", dados.ConsumerKey, dados.ConsumerSecret));
+            var response = await _apiClient.GetAsync(Settings.UrlDadosMinimos);
+
+            if (response.IsSuccessStatusCode)
+                return response.Content.ReadAsStringAsync().Result;
+
+            return string.Empty;
+
+            //Forçar o retorno de um status code incorreto
+        }
+
         public string GetBearerToken(string url, string method, string consumerKey, string consumerSecret)
         {
             var jsonHttpAut = new JsonAuthentication

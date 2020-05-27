@@ -36,6 +36,8 @@ namespace C4M.BackgroundTasks
 
                 var retorno = await ObterDadosCompletosTodosOsClientesAsync();
 
+                var dm = await ObterDadosMinimosAsync();
+
                 var obj = JsonConvert.DeserializeObject<List<Instrument>>(retorno, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver(), NullValueHandling = NullValueHandling.Ignore });
 
                 try
@@ -60,6 +62,11 @@ namespace C4M.BackgroundTasks
         private async Task<string> ObterDadosCompletosTodosOsClientesAsync()
         {
             return await _c4mSvc.ObterDadosCompletosTodosOsClientes(Settings.FirstOrDefault(x => x.Id == "12"));
+        }
+
+        private async Task<string> ObterDadosMinimosAsync()
+        {
+            return await _c4mSvc.ObterDadosMinimos(Settings.FirstOrDefault(x => x.Id == "1"));
         }
 
         public override async Task StartAsync(CancellationToken cancellationToken)

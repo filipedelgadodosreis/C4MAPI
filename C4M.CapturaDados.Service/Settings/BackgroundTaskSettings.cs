@@ -16,6 +16,8 @@
         public class C4MApiSettings
         {
             public string UrlDadosCompletos { get; set; }
+
+            public string UrlDadosMinimos { get; set; }
         }
     }
 }

@@ -6,5 +6,7 @@ namespace C4M.BackgroundTasks.Services
     public interface IC4MService
     {
         Task<string> ObterDadosCompletosTodosOsClientes(C4MSettings dados);
+
+        Task<string> ObterDadosMinimos(C4MSettings dados);
     }
 }

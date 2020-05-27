@@ -8,7 +8,7 @@ namespace C4M.Domain.Entities
         public List<TresCoracoesEquipamentos> Devices { get; set; } = new List<TresCoracoesEquipamentos>();
     }
 
-    [BsonCollection("3Coracoes")]
+    [BsonCollection("TresCoracoesDC")]
     public class TresCoracoesEquipamentos : BaseEquipamentos
     {
 
