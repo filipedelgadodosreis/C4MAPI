@@ -1,15 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
-namespace C4M.Api.ViewModel
+namespace C4M.Domain.Entities
 {
-    public class DeviceCreate
-    {
-        public List<Instrument> Devices { get; set; } = new List<Instrument>();
-    }
-
-    public class Instrument
+    public abstract class BaseEquipamentos : Document
     {
         public int activeApplicationId { get; set; }
         public string activeApplicationVersionName { get; set; }
@@ -21,7 +15,7 @@ namespace C4M.Api.ViewModel
         public Applicationusagestatisticsmonitorsettings applicationUsageStatisticsMonitorSettings { get; set; }
         public Batterymonitorsettings batteryMonitorSettings { get; set; }
         public Blacklist[] blacklist { get; set; }
-        public DateTime? creationDate { get; set; }
+        public DateTime creationDate { get; set; }
         public Datausage dataUsage { get; set; }
         public Datausagemonitorsettings dataUsageMonitorSettings { get; set; }
         public Deviceinformation deviceInformation { get; set; }
@@ -35,11 +29,11 @@ namespace C4M.Api.ViewModel
         public int DeviceId { get; set; }
 
         public Lastbatterydata lastBatteryData { get; set; }
-        public DateTime? lastCommunication { get; set; }
-        public DateTime? lastGroupChangeDate { get; set; }
+        public DateTime lastCommunication { get; set; }
+        public DateTime lastGroupChangeDate { get; set; }
         public Lastlocation lastLocation { get; set; }
         public Lastmemorydata lastMemoryData { get; set; }
-        public object lgPolicySettings { get; set; }
+        public string lgPolicySettings { get; set; }
         public Locationhistorymonitorsettings locationHistoryMonitorSettings { get; set; }
         public Locationmonitorsettings locationMonitorSettings { get; set; }
         public string lockPassword { get; set; }
@@ -53,24 +47,16 @@ namespace C4M.Api.ViewModel
         public DateTime DtLeitura { get; set; }
     }
 
-    public class Applicationusagestatisticsmonitorsettings
-    {
-        public bool enabled { get; set; }
-        public object monitoringInterval { get; set; }
-        public object storageTime { get; set; }
-        public object synchronizationInterval { get; set; }
-    }
-
     public class Applicationinventory
     {
         public Applicationpackage[] applicationPackages { get; set; }
         public Devicedate deviceDate { get; set; }
-        public DateTime? receivedDate { get; set; }
+        public DateTime receivedDate { get; set; }
     }
 
     public class Devicedate
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }
@@ -78,12 +64,20 @@ namespace C4M.Api.ViewModel
     public class Applicationpackage
     {
         public string friendlyName { get; set; }
-        public DateTime? installationTime { get; set; }
+        public DateTime installationTime { get; set; }
         public bool isSystemApplication { get; set; }
-        public DateTime? lastUpdateTime { get; set; }
+        public DateTime lastUpdateTime { get; set; }
         public string packageName { get; set; }
         public string packageVersion { get; set; }
-        public int packageVersionCode { get; set; }
+        public int? packageVersionCode { get; set; }
+    }
+
+    public class Applicationusagestatisticsmonitorsettings
+    {
+        public bool enabled { get; set; }
+        public object monitoringInterval { get; set; }
+        public object storageTime { get; set; }
+        public object synchronizationInterval { get; set; }
     }
 
     public class Batterymonitorsettings
@@ -96,16 +90,16 @@ namespace C4M.Api.ViewModel
 
     public class Datausage
     {
-        public DateTime? cycleStart { get; set; }
+        public DateTime cycleStart { get; set; }
         public Devicedate1 deviceDate { get; set; }
-        public Int64 receivedBytes { get; set; }
-        public Int64 sentBytes { get; set; }
-        public DateTime? receivedDate { get; set; }
+        public long receivedBytes { get; set; }
+        public int sentBytes { get; set; }
+        public DateTime receivedDate { get; set; }
     }
 
     public class Devicedate1
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }
@@ -133,12 +127,12 @@ namespace C4M.Api.ViewModel
         public object[] simCards { get; set; }
         public string version { get; set; }
         public string wifiMacAddress { get; set; }
-        public DateTime? receivedDate { get; set; }
+        public DateTime receivedDate { get; set; }
     }
 
     public class Devicedate2
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }
@@ -150,7 +144,6 @@ namespace C4M.Api.ViewModel
 
         [JsonProperty("id")]
         public int GroupId { get; set; }
-
         public string name { get; set; }
         public string parentFullName { get; set; }
         public int? parentGroupId { get; set; }
@@ -160,26 +153,26 @@ namespace C4M.Api.ViewModel
     {
         public Devicedate3 deviceDate { get; set; }
         public int level { get; set; }
-        public DateTime? receivedDate { get; set; }
+        public DateTime receivedDate { get; set; }
     }
 
     public class Devicedate3
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }
 
     public class Lastlocation
     {
-        public DateTime? lastCommunicationDate { get; set; }
+        public DateTime lastCommunicationDate { get; set; }
         public DateTime? receivedDate { get; set; }
-        public float accuracy { get; set; }
-        public float altitude { get; set; }
-        public float bearing { get; set; }
+        public float? accuracy { get; set; }
+        public float? altitude { get; set; }
+        public float? bearing { get; set; }
         public Coordinate coordinate { get; set; }
         public Devicedate4 deviceDate { get; set; }
-        public float speed { get; set; }
+        public float? speed { get; set; }
     }
 
     public class Coordinate
@@ -190,7 +183,7 @@ namespace C4M.Api.ViewModel
 
     public class Devicedate4
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }
@@ -204,12 +197,12 @@ namespace C4M.Api.ViewModel
         public long totalExternalStorage { get; set; }
         public long totalInternalStorage { get; set; }
         public int totalRamMemory { get; set; }
-        public DateTime? receivedDate { get; set; }
+        public DateTime receivedDate { get; set; }
     }
 
     public class Devicedate5
     {
-        public DateTime? date { get; set; }
+        public DateTime date { get; set; }
         public string timeZoneId { get; set; }
         public int utcOffset { get; set; }
     }

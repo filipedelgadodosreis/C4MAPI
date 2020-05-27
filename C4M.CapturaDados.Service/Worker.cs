@@ -1,6 +1,9 @@
+using C4M.BackgroundTasks.Models;
 using C4M.BackgroundTasks.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +36,22 @@ namespace C4M.BackgroundTasks
 
                 var retorno = await ObterDadosCompletosTodosOsClientesAsync();
 
+                var obj = JsonConvert.DeserializeObject<List<Instrument>>(retorno, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver(), NullValueHandling = NullValueHandling.Ignore });
 
+                try
+                {
+                    foreach (var item in obj)
+                    {
+                        item.IdEmpresa = 12;
+                        item.DtLeitura = DateTime.Now;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                var result = JsonConvert.SerializeObject(obj);
 
                 await Task.Delay(1000, stoppingToken);
             }
@@ -41,7 +59,7 @@ namespace C4M.BackgroundTasks
 
         private async Task<string> ObterDadosCompletosTodosOsClientesAsync()
         {
-           return await _c4mSvc.ObterDadosCompletosTodosOsClientes(Settings.FirstOrDefault());
+            return await _c4mSvc.ObterDadosCompletosTodosOsClientes(Settings.FirstOrDefault(x => x.Id == "12"));
         }
 
         public override async Task StartAsync(CancellationToken cancellationToken)

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace C4M.Api.ViewModel
+namespace C4M.BackgroundTasks.Models
 {
     public class DeviceCreate
     {
@@ -18,7 +18,7 @@ namespace C4M.Api.ViewModel
         public object androidForWorkPolicySettings { get; set; }
         public Applicationinventory applicationInventory { get; set; }
         public object[] applicationSettings { get; set; }
-        public Applicationusagestatisticsmonitorsettings applicationUsageStatisticsMonitorSettings { get; set; }
+        public object applicationUsageStatisticsMonitorSettings { get; set; }
         public Batterymonitorsettings batteryMonitorSettings { get; set; }
         public Blacklist[] blacklist { get; set; }
         public DateTime? creationDate { get; set; }
@@ -51,14 +51,6 @@ namespace C4M.Api.ViewModel
         public object vpnSettings { get; set; }
         public int IdEmpresa { get; set; }
         public DateTime DtLeitura { get; set; }
-    }
-
-    public class Applicationusagestatisticsmonitorsettings
-    {
-        public bool enabled { get; set; }
-        public object monitoringInterval { get; set; }
-        public object storageTime { get; set; }
-        public object synchronizationInterval { get; set; }
     }
 
     public class Applicationinventory
@@ -174,6 +166,8 @@ namespace C4M.Api.ViewModel
     {
         public DateTime? lastCommunicationDate { get; set; }
         public DateTime? receivedDate { get; set; }
+
+ 
         public float accuracy { get; set; }
         public float altitude { get; set; }
         public float bearing { get; set; }
