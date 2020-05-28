@@ -8,7 +8,7 @@ namespace C4M.Api.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<DeviceCreate, Domain.Entities.EstruturaEquipamento>();
-            CreateMap<Instrument, Domain.Entities.TresCoracoesEquipamentos>();
+            CreateMap<Instrument, Domain.Entities.Equipamentos>();
             CreateMap<Applicationinventory, Domain.Entities.Applicationinventory>();
             CreateMap<Applicationpackage, Domain.Entities.Applicationpackage>();
             CreateMap<Devicedate, Domain.Entities.Devicedate>();
@@ -32,8 +32,8 @@ namespace C4M.Api.AutoMapper
             CreateMap<Memorymonitorsettings, Domain.Entities.Memorymonitorsettings>();
             CreateMap<Applicationusagestatisticsmonitorsettings, Domain.Entities.Applicationusagestatisticsmonitorsettings>();
 
-            CreateMap<InstrumentDadosMinimos, Domain.Entities.TresCoracoesDadosMinimos>();
-            CreateMap<DeviceCreateDadosMinimos, Domain.Entities.TresCoracoesEquipamentosDadosMinimos>();
+            CreateMap<InstrumentDadosMinimos, Domain.Entities.DadosMinimos>();
+            CreateMap<DeviceCreateDadosMinimos, Domain.Entities.EquipamentosDadosMinimos>();
             CreateMap<Batterymonitorsettingsdm, Domain.Entities.Batterymonitorsettingsdm>();
             CreateMap<Deviceinformationdm, Domain.Entities.Deviceinformationdm>();
             CreateMap<Devicedatedm, Domain.Entities.Devicedatedm>();

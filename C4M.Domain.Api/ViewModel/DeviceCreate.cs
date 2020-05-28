@@ -6,6 +6,7 @@ namespace C4M.Api.ViewModel
 {
     public class DeviceCreate
     {
+        public string CollectionName { get; set; }
         public List<Instrument> Devices { get; set; } = new List<Instrument>();
     }
 

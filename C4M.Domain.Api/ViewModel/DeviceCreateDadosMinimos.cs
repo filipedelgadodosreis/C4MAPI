@@ -7,6 +7,7 @@ namespace C4M.Api.ViewModel
 {
     public class DeviceCreateDadosMinimos
     {
+        public string CollectionName { get; set; }
         public List<InstrumentDadosMinimos> Devices { get; set; } = new List<InstrumentDadosMinimos>();
     }
 

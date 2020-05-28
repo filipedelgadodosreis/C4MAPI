@@ -27,7 +27,7 @@ namespace C4M.Domain.Api.Controllers
                 LastName = "Doe"
             };
 
-            await _peopleRepository.InsertOneAsync(person);
+            await _peopleRepository.InsertOneAsync(person,"Person");
         }
 
         [Route("")]
@@ -36,7 +36,7 @@ namespace C4M.Domain.Api.Controllers
         {
             var people = _peopleRepository.FilterBy(
                 filter => filter.FirstName != "test",
-                projection => projection.FirstName
+                projection => projection.FirstName,"Person"
             );
             return people;
         }

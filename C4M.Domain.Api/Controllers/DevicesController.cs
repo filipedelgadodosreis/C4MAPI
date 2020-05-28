@@ -13,14 +13,14 @@ namespace C4M.Api.Controllers
 {
     [ApiVersion("1.0")]
     [ApiConventionType(typeof(DeviceApiConventions))]
-    public class TresCoracoesController : ControllerBaseApi
+    public class DevicesController : ControllerBaseApi
     {
         private readonly IMapper _mapper;
-        private readonly ILogger<TresCoracoesController> _logger;
-        private readonly IMongoRepository<TresCoracoesDadosMinimos> _deviceRepositoryDadosMinimos;
-        private readonly IMongoRepository<TresCoracoesEquipamentos> _deviceRepositoryDadosCompletos;
+        private readonly ILogger<DevicesController> _logger;
+        private readonly IMongoRepository<DadosMinimos> _deviceRepositoryDadosMinimos;
+        private readonly IMongoRepository<Equipamentos> _deviceRepositoryDadosCompletos;
 
-        public TresCoracoesController(IMongoRepository<TresCoracoesEquipamentos> deviceRepositoryDadosCompletos, ILogger<TresCoracoesController> logger, IMapper mapper, IMongoRepository<TresCoracoesDadosMinimos> deviceRepositoryDadosMinimos)
+        public DevicesController(IMongoRepository<Equipamentos> deviceRepositoryDadosCompletos, ILogger<DevicesController> logger, IMapper mapper, IMongoRepository<DadosMinimos> deviceRepositoryDadosMinimos)
         {
             _mapper = mapper;
             _logger = logger;
@@ -29,46 +29,46 @@ namespace C4M.Api.Controllers
         }
 
         [HttpGet("equipamentos/dadoscompletos")]
-        public async Task<ActionResult<DeviceCreate>> GetAllFullDataAsync()
+        public async Task<ActionResult<DeviceCreate>> GetAllFullDataAsync(string collectionName)
         {
             _logger.LogDebug("Obtendo todos os devices.");
 
-            var devices = await _deviceRepositoryDadosCompletos.FilterBy(f => true);
+            var devices = await _deviceRepositoryDadosCompletos.FilterBy(f => true, collectionName);
             var lstDevices = _mapper.Map<IEnumerable<Instrument>>(devices);
 
-            return Ok(new DeviceCreate() { Devices = lstDevices.ToList() });
+            return Ok(new DeviceCreate() { Devices = lstDevices.ToList(), CollectionName = collectionName });
         }
 
         [HttpPost]
         [Route("equipamentos/dadoscompletos")]
         public async Task<ActionResult> PostAllFullDataAsync([FromBody]DeviceCreate deviceCreate)
         {
-            var devices = _mapper.Map<List<TresCoracoesEquipamentos>>(deviceCreate.Devices);
+            var devices = _mapper.Map<List<Equipamentos>>(deviceCreate.Devices);
 
-            await _deviceRepositoryDadosCompletos.InsertManyAsync(devices);
+            await _deviceRepositoryDadosCompletos.InsertManyAsync(devices, deviceCreate.CollectionName);
 
             return Ok();
         }
 
 
         [HttpGet("equipamentos/dadosminimos")]
-        public async Task<ActionResult<DeviceCreateDadosMinimos>> GetAllMinimumDataAsync()
+        public async Task<ActionResult<DeviceCreateDadosMinimos>> GetAllMinimumDataAsync(string collectionName)
         {
             _logger.LogDebug("Obtendo todos os devices.");
 
-            var devices = await _deviceRepositoryDadosMinimos.FilterBy(f => true);
+            var devices = await _deviceRepositoryDadosMinimos.FilterBy(f => true, collectionName);
             var lstDevices = _mapper.Map<IEnumerable<InstrumentDadosMinimos>>(devices);
 
-            return Ok(new DeviceCreateDadosMinimos() { Devices = lstDevices.ToList() });
+            return Ok(new DeviceCreateDadosMinimos() { Devices = lstDevices.ToList(), CollectionName = collectionName });
         }
 
         [HttpPost]
         [Route("equipamentos/dadosminimos")]
         public async Task<ActionResult> PostAllMinimumDataAsync([FromBody]DeviceCreateDadosMinimos deviceCreate)
         {
-            var lstDevice = _mapper.Map<List<TresCoracoesDadosMinimos>>(deviceCreate.Devices);
+            var lstDevice = _mapper.Map<List<DadosMinimos>>(deviceCreate.Devices);
 
-            await _deviceRepositoryDadosMinimos.InsertManyAsync(lstDevice);
+            await _deviceRepositoryDadosMinimos.InsertManyAsync(lstDevice, deviceCreate.CollectionName);
 
             return Ok();
         }
