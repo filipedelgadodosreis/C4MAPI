@@ -18,16 +18,7 @@ namespace C4M.Infra.Mongo.Repositories
         public MongoRepository(IMongoDbSettings settings)
         {
             _mongoDatabase = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
-            //_collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
         }
-
-        //private protected string GetCollectionName(Type documentType)
-        //{
-        //    return ((BsonCollectionAttribute)documentType.GetCustomAttributes(
-        //            typeof(BsonCollectionAttribute),
-        //            true)
-        //        .FirstOrDefault())?.CollectionName;
-        //}
 
         public void SetCollection(string collectionName)
         {
