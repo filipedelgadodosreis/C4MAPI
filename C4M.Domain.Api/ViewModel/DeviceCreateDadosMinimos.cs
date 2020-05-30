@@ -51,6 +51,8 @@ namespace C4M.Api.ViewModel
         public object[] remoteAssistances { get; set; }
         public object samsungPolicySettings { get; set; }
         public object vpnSettings { get; set; }
+        public int IdEmpresa { get; set; }
+        public DateTime DtLeitura { get; set; }
     }
 
     [DataContract(Name = "Batterymonitorsettings")]
