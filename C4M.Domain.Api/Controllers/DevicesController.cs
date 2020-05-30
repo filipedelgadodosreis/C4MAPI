@@ -41,11 +41,11 @@ namespace C4M.Api.Controllers
         }
 
         [HttpGet("equipamentos/dadoscompletos/{dataLeitura:datetime}")]
-        public async Task<ActionResult<DeviceCreate>> GetAllFullDatabyDateAsync(string collectionName, DateTime data)
+        public async Task<ActionResult<DeviceCreate>> GetAllFullDatabyDateAsync(string collectionName, DateTime dataLeitura)
         {
             _logger.LogDebug("Obtendo todos os devices.");
 
-            var devices = await _deviceRepositoryDadosCompletos.FilterBy(f => f.DtLeitura == data, collectionName);
+            var devices = await _deviceRepositoryDadosCompletos.FilterBy(f => f.DtLeitura == dataLeitura, collectionName);
             var lstDevices = _mapper.Map<IEnumerable<Instrument>>(devices);
 
             return Ok(new DeviceCreate() { Devices = lstDevices.ToList(), CollectionName = collectionName });
@@ -75,11 +75,11 @@ namespace C4M.Api.Controllers
         }
 
         [HttpGet("equipamentos/dadosminimos/{dataLeitura:datetime}")]
-        public async Task<ActionResult<DeviceCreateDadosMinimos>> GetAllMinimumDatabyDateAsync(string collectionName, DateTime data)
+        public async Task<ActionResult<DeviceCreateDadosMinimos>> GetAllMinimumDatabyDateAsync(string collectionName, DateTime dataLeitura)
         {
             _logger.LogDebug("Obtendo todos os devices.");
 
-            var devices = await _deviceRepositoryDadosMinimos.FilterBy(f => f.DtLeitura == data, collectionName);
+            var devices = await _deviceRepositoryDadosMinimos.FilterBy(f => f.DtLeitura == dataLeitura, collectionName);
             var lstDevices = _mapper.Map<IEnumerable<InstrumentDadosMinimos>>(devices);
 
             return Ok(new DeviceCreateDadosMinimos() { Devices = lstDevices.ToList(), CollectionName = collectionName });
