@@ -14,11 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\C4M.Infra.Mongo\C4M.Infra.Mongo.csproj" />
-    <ProjectReference Include="..\CM.Domain\C4M.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Infrastructure\" />
   </ItemGroup>
